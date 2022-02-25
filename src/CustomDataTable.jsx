@@ -6,9 +6,9 @@
  */
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-let $ = require('jquery');
-require('datatables.net');
-require('datatables.net-dt/css/jquery.dataTables.min.css');
+import $ from 'jquery'
+import 'datatables.net'
+import 'datatables.net-dt/css/jquery.dataTables.min.css'
 
 
 
@@ -16,6 +16,7 @@ require('datatables.net-dt/css/jquery.dataTables.min.css');
 export class CustomDataTable extends Component {
     static propTypes = {
         id: PropTypes.string,
+        className: PropTypes.string,
         children: PropTypes.node
     }
 
@@ -31,7 +32,7 @@ export class CustomDataTable extends Component {
 
     render() {
         return (
-            <table id={this.props.id} className="custom-data-table" width="100%">
+            <table id={this.props.id} className={this.props.className} width="100%">
                 {this.props.children}
             </table>
         )

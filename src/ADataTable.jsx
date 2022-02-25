@@ -8,25 +8,26 @@
  */
 
 import React, { useEffect } from 'react'
-let $ = require('jquery');
-require('datatables.net');
-require('datatables.net-dt/css/jquery.dataTables.min.css');
+import $ from 'jquery'
+import 'datatables.net'
+import 'datatables.net-dt/css/jquery.dataTables.min.css'
 
 
 
-const ADataTable = ({ columns, dataset }) => {
+const ADataTable = ({ children, id }) => {
 
     useEffect(() => {
-        if (dataset != undefined && dataset.length > 0) {
-            $('#custom-data-table').DataTable({
-                data: dataset,
-                columns: columns,
-            });
-        }
+        $(`#${id}`).DataTable();
+        console.log("useEffect Called")
+
+        // return () => {
+        //     $(`#${id}`).DataTable().clear()
+        // }
+
     }, [])
 
     return (
-        <table id="custom-data-table" className="custom-data-table" width="100%"></table>
+        <table id={id} className="custom-data-table" width="100%">{children}</table>
     )
 }
 
